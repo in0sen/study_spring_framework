@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+
+	<p th:text="${'最後にログインしたのは'+session.userDataId2+'さん'}"></p>
+	<ul th:each="item : ${session.userDataId4}">
+		<li th:text="${item}"></li>
+	</ul>
+
+	<h4>第11回 model & sessionについて</h4>
+	<h4>2ページ目</h4>
+
+	<h3>モデルにしまったデータ</h3>
+	<p th:text="${modelData}"></p>
+
+	<h3>セッションにしまったデータ</h3>
+	<p th:text="${session.sessionData}"></p>
+	<p th:text="${session.sessionData2}"></p>
+
+	<a href="http://localhost:8080/elevenpageone">1ページ目に戻る</a>
+
+</body>
+
+</html>

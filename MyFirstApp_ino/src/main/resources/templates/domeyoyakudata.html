@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>データ操作画面</title>
+		<th:block th:if="${notins}">
+			<script type="text/javascript" src="js/domeyoyaku.js"></script>
+		</th:block>
+	</head>
+	<body>
+			<p>日付を入力する際は「〇月,〇日」で記入するように。例)1月,1日</p>
+		<form th:action="@{/domedataIns}" method="POST">
+			<p>予約登録</p>
+			<p>コートは「バスケ、バレー」のみ</p>
+			予約日<input type="text" name="yoyakubi"><br>
+			クラス<input type="text" name="yoyakuclass"><br>
+			登録名<input type="text" name="yoyakuname"><br>
+			コート<input type="text" name="yoyakucoat"><br>
+			<input type="submit" value="登録">
+		</form>
+		<br>
+		
+		<form th:action="@{/domedataUpd}" method="POST">
+			<p>予約更新</p>
+			登録者名<input type="text" name="yoyakuname"><br>
+			変更前日<input type="text" name="beforeday"><br>
+			変更後日<input type="text" name="afterday"><br>
+			<input type="submit" value="変更">
+		</form>
+		<br>
+		
+		<form th:action="@{/domedataDel}" method="POST">
+			<p>予約削除</p>
+			削除日<input type="text" name="yoyakubi"><br>
+			登録名<input type="text" name="yoyakuname"><br>
+			コート<input type="text" name="yoyakucoat"><br>
+			<input type="submit"><br>
+		</form>
+		
+		<a href="http://localhost:8080/domeitirann">予約一覧のページに行く</a>
+	</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ランキング</title>
+	</head>
+	<body>
+		<h3>ランキング</h3>
+		<th:block th:if="${iti != null}">
+			<table>
+				<tr>
+					<th>順位</th>
+					<th>名前</th>
+					<th>回数</th>
+				</tr>
+				<tr th:each="itemiti:${iti}">
+					<td><h5 th:text="１位"></h5></td>
+					<td><p th:text="${itemiti.name}"></p></td>
+					<td><p th:text="${rn.iti+'回'}"></p></td>
+				</tr>
+				
+				<th:block th:if="${nii != null}">
+					<tr th:each="itemnii:${nii}">
+						<td><h5 th:text="２位"></h5></td>
+						<td><p th:text="${itemnii.name}"></p></td>
+						<td><p th:text="${rn.nii+'回'}"></p></td>
+					</tr>
+					
+					<th:block th:if="${sani != null}">
+						<tr th:each="itemsani:${sani}">
+							<td><h5 th:text="３位"></h5></td>
+							<td><p th:text="${itemsani.name}"></p></td>
+							<td><p th:text="${rn.sani+'回'}"></p></td>
+						</tr>
+					</th:block>
+				</th:block>
+			</table>
+		</th:block>
+	</body>
+</html>

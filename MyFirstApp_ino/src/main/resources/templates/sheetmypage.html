@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>マイページ</title>
+	</head>
+	<body>
+		
+		<h3 th:text="${'ユーザ名'+session.id}"></h3>
+		<br>
+		<h4>座席予約履歴</h4>
+		<table>
+			<tr>
+				<th>予約番号</th>
+				<th>予約日</th>
+			</tr>
+			<tr th:each="rireki:${yoyakurireki}">
+				<td th:text="${rireki.yoyakubango}"></td>
+				<td th:text="${rireki.yoyakubi}"></td>
+			</tr>
+		</table>
+		<br>
+		<h4>予約回数</h4>
+		<p th:text="${count}"></p>
+		<br>
+		<h4>ランク</h4>
+		<p th:text="${rank}"></p>
+	</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<th:block th:if="${yoyakuzumi=='tr'}">
+		<script type="text/javascript" src="js/zasekiyoyaku.js"></script>
+	</th:block>
+</head>
+
+<body>
+	<th:block th:if="${session.ID == null}">
+		<form th:action="@{/zasekiyoyakugou}" method="POST">
+			ＩＤ<input type="text" name="ID"><br>
+			ＰＷ<input type="text" name="PW"><br>
+			<input type="submit" value="ログイン">
+		</form>
+	</th:block>
+
+	<th:block th:if="${session.ID != null}">
+
+		<th:block th:if="${notdelete}">
+			<p>IDが違うか番号が予約されていません</p>
+		</th:block>
+
+
+		<form th:action="@{/zasekiyoyakugou}" method="POST">
+			<p>操作を入力してください</p>
+			<input type="text" name="sousa">
+			<input type="submit" value="送信">
+		</form>
+
+		<th:block th:if="${'予約'== sousa}">
+			<form th:action="@{/zasekiyoyakugou}" method="POST">
+				<p>予約したい座席番号を1~10で入力してください</p>
+				<input type="number" min="1" max="10" name="zaseki1"><br>
+				<p>何月に予約しますか</p>
+				<input type="number" min="1" max="12" name="month1"><br>
+				<input type="submit" value="送信" name="sousinn">
+			</form>
+		</th:block>
+
+		<th:block th:if="${'参照'==sousa}">
+			<p>現在の予約表<br>＜予約済＞</p>
+			<ul>
+				<li th:each="itemyoyaku : ${session.yoyaku}">
+					<p th:text="${itemyoyaku.get(ID)[0]+'番　'+itemyoyaku.get(ID)[1]+'月'}"></p>
+				</li>
+			</ul>
+		</th:block>
+
+		<th:block th:if="${'まとめて予約'==sousa}">
+			<form th:action="@{/zasekiyoyakugou}" method="POST">
+				<p>予約したい番号を2つ入力してください</p>
+				<p>※追加送信の場合、上のほうの月だけ入力してください</p>
+				<p th:text="${'　番号　　　月'}"></p>
+				<input type="number" min="1" max="10" name="zaseki1">
+				<input type="number" min="1" max="12" name="month1"><br>
+				<input type="number" min="1" max="10" name="zaseki2">
+				<input type="number" min="1" max="12" name="month2"><br>
+				<input type="submit" value="送信" name="sousinn">
+				<input type="submit" value="追加送信" name="sousinn">
+			</form>
+		</th:block>
+
+		<th:block th:if="${'取消'==sousa}">
+			<form th:action="@{/zasekiyoyakugou}" method="POST">
+				<p>取り消したい番号を入力してください</p>
+				<input type="number" name="delete">
+				<input type="submit" value="送信">
+			</form>
+		</th:block>
+	</th:block>
+</body>
+
+</html>

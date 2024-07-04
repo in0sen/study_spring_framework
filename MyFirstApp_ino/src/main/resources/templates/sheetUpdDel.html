@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>予約変更削除</title>
+	</head>
+	<body>
+		<th:block th:if="${session.id == null}">
+			<p>ログイン名：ゲスト</p>
+		</th:block>
+		<th:block th:if="${session.id != null}">
+			<p th:text="${'ログイン名：'+session.id}"></p>
+		</th:block>
+		<h4>＜変更する予約情報を入力してください＞</h4>
+		<form th:action="@{/sheetUpd}" method="POST"><br>
+			予約番号<input type="text" name="number"><br>
+			予約者名<input type="text" name="name"th:value="${session.id}"><br>
+			<input type="submit" value="変更"><br>
+		</form>
+		
+		<h4>＜削除する予約情報を入力してください＞</h4>
+		<form th:action="@{/sheetDel}" method="POST"><br>
+			予約番号<input type="text" name="number"><br>
+			<input type="submit" value="削除"><br>
+		</form>
+		<a href="http://localhost:8080/sheetreserv">予約登録一覧</a>
+	</body>
+</html>

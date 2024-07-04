@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+	<h3>概要検索</h3>
+	<form th:action="@{/secondsou}" method="POST">
+		<input type="text" name="gaiyo"><br>
+		<input type="submit" value="検索">
+	</form>
+	<br>
+	<h3>登録</h3>
+	<form th:action="@{/secondsou}" method="POST">
+		<input type="text" name="gaiyo">
+		<input type="text" name="setumei"><br>
+		<input type="submit" value="登録">
+	</form>
+	<th:block th:if="${null != kensaku}">
+		<h4>検索結果</h4>
+		<table>
+			<tr>
+				<th>概要</th>
+				<th>説明</th>
+			</tr>
+			<tr th:each="KensakuItem:${kensaku}">
+				<td>
+					<p th:text=${KensakuItem.gaiyo}></p>
+				</td>
+				<td>
+					<p th:text=${KensakuItem.setumei}></p>
+				</td>
+			</tr>
+		</table>
+	</th:block>
+</body>
+
+</html>

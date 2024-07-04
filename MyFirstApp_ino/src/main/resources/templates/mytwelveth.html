@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+<body>
+	<h4>第12回 とにかく復習が大事です。</h4>
+	<h4>A1問題</h4>
+	<p th:text="${modelData}"></p>
+	<p th:each="itema : ${resultList} "th:text="${itema}"></p>
+	<h4>A2問題</h4>
+	<p th:text="${session.sessionData}"></p>
+	<hr>
+	<h4>B1問題</h4>
+		<form th:action="@{/twelvethpage}" method="POST">
+			<input type="text" name="text">
+			<input type="submit" value="送信">
+		</form>
+		<th:block th:if="${inputData=='ビタミンBは過剰摂取の心配が少ないぜ'||inputData=='ベータカロチンはニンジンに多く含まれるぜ'}">
+			<p>栄養に自信ニキですね</p>
+		</th:block>
+	<h4>B2問題</h4>
+	<p th:text="${'画面から入力された' + session.sessionData2 + 'をセッションに格納しました。'}"></p>
+	<hr>
+	<h4>↓個別練習問題↓</h4>
+	<p th:text="${modelPra1}"></p>
+	<br>
+	<ol>
+		<li th:each ="pra2 : ${praList}">
+			<th:block th:if="${pra2!='2件目だよ' && pra2!='4件目だよ'}">
+				<p th:text="${pra2}"></p>
+			</th:block>
+			<th:block th:if="${pra2=='2件目だよ' || pra2 =='4件目だよ'}">
+				<p>偶数だよ</p>
+			</th:block>
+		</li>
+	</ol>
+	<br>
+	<form th:action="@{/twefour}" method="POST">
+		<p>好きな食べ物</p>
+		<input type="text" name="likefood">
+		<input type="submit" value="送信">
+	</form>
+	<p th:text="${session.sessionInput}"></p>
+	</body>
+</body>
+</html>

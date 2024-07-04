@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>クラス更新</title>
+		<th:block th:if="${js}">
+			<script type="text/javascript" src="js/shitennou.js"></script>
+		</th:block>
+	</head>
+	<body>
+		<form th:action="@{/classupd}" method="POST">
+			<input type="text" name="beforeclass" placeholder="更新前クラス"><br>
+			<input type="text" name="afterclass" placeholder="更新後クラス"><br>
+			<input type="submit" value="更新">
+		</form>
+		<th:block th:if="${value != null}">
+			<table>
+				<tr>
+					<th>ID</th>
+					<th>名前</th>
+					<th>パスワード</th>
+					<th>権限</th>
+					<th>クラス</th>
+					<th>番号</th>
+					<th>出身高校</th>
+				</tr>
+				<tr th:each="valuedata:${value}">
+					<td><p th:text="${valuedata.user_id}"></p></td>
+					<td><p th:text="${valuedata.user_name}"></p></td>
+					<td><p th:text="${valuedata.password}"></p></td>
+					<td><p th:text="${valuedata.authority}"></p></td>
+					<td><p th:text="${afterclass}"></p></td>
+					<td><p th:text="${valuedata.student_no}"></p></td>
+					<td><p th:text="${valuedata.school}"></p></td>
+				</tr>
+			</table>
+		</th:block>
+	</body>
+</html>

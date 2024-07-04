@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+</head>
+
+<body>
+
+	<h4>DB連携！</h4>
+
+	<h3>ペアプロ！</h3>
+
+	<h4>A-1全てのデータを表示しよう</h4>
+	画面最下部の「検索結果」の部分に全部のデータが表示されるようにしてね。
+	<hr>
+
+	<h4>↓検索結果↓</h4>
+	<table>
+		<tr>
+			<th>資格名</th>
+			<th>資格ランク</th>
+		</tr>
+		<tr th:each="singledata:${kensakupra}">
+			<td>
+				<p th:text=${singledata.sikakuname}></p>
+			</td>
+			<td>
+				<p th:text=${singledata.sikakurank}></p>
+			</td>
+		</tr>
+	</table>
+	
+	<form th:action="@{/foruthpraIns}" method="POST">
+		資格の名前<input type="text" name="cername"><br>
+		資格ランク<input type="text" name="cerrank"><br>
+		<input type="submit" value="登録">
+	</form>
+	<br>
+	<form th:action="@{/fourthpraUpd}" method="POST">
+		更新したい資格ランクと更新したい元の資格名を入力してください<br>
+		資格の名前<input type="text" name="cername"><br>
+		資格ランク<input type="text" name="cerrank"><br>
+		<input type="submit" value="更新">
+	</form>
+	<br>
+	<form th:action="@{/fourthpraDel}" method="POST">
+		削除する名前<input type="text" name="cername"><br>
+		<input type="submit" value="削除">
+	</form>
+</body>
+
+</html>

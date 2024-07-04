@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ドーム予約一覧</title>
+	</head>
+	<body>
+		<table>
+			<tr>
+				<th>予約日</th>
+				<th>予約クラス</th>
+				<th>予約者名</th>
+				<th>コート</th>
+			</tr>
+			<tr th:each="dataitem:${kensakukekka}">
+				<td><p th:text="${dataitem.yoyakubi}"></p></td>
+				<td><p th:text="${dataitem.yoyakuclass}"></p></td>
+				<td><p th:text="${dataitem.yoyakuname}"></p></td>
+				<td><p th:text="${dataitem.yoyakucoat}"></p></td>
+			</tr>
+		</table>
+		<a href="http://localhost:8080/domedata">登録・変更・削除のページに行く</a>
+	</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ログイン画面</title>
+		<th:block th:if="${logtf}">
+			<script type="text/javascript" src="js/sheet.js"></script>
+		</th:block>
+	</head>
+	<body>
+		<h4>＜ユーザログイン＞</h4>
+		<form th:action="@{/sheetLogin}" method="POST">
+			ログインＩＤ<input type="text" name="id"><br>
+			　パスワード<input type="password" name="pass"><br>
+			<input type="submit" value="ログイン">
+		</form>
+		<h4>＜ユーザ登録＞</h4>
+		<form th:action="@{/sheetLoginIns}" method="POST">
+			ログインＩＤ<input type="text" name="id"><br>
+			　パスワード<input type="password" name="pass"><br>
+			<input type="submit" value="登録">
+		</form>
+	</body>
+</html>

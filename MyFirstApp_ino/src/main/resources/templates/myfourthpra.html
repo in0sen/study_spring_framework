@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" type="text/css" href="css/myfourthpra.css">
+		<script type="text/javascript" src="js/myfourthpra.js"></script>
+	</head>
+	<body>
+		<form th:action="@{/fourthprapra}" method="POST">
+			出来た？<input type="text" name="dekita">
+			<input type="submit" value="送信">
+		</form>
+		<p th:text="${dekita}"></p>
+	</body>
+</html>

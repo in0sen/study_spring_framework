@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>予約登録検索、一覧</title>
+	</head>
+	<body>
+		<th:block th:if="${session.id == null}">
+			<p>ゲスト</p>
+		</th:block>
+		<th:block th:if="${session.id != null}">
+			<p th:text="${'ログイン名：'+session.id}"></p>
+		</th:block>
+		
+		<h3>第3回政策課題</h3>
+		<h4>＜予約情報を入力してください＞</h4>
+		<form th:action="@{/sheetIns}" method="POST">
+			　予約番号<input type="text" name="number"><br>
+			　　予約日<input type="text" name="day"><br>
+			　予約者名<input type="text" name="name" th:value="${session.id}"><br>
+			　<input type="submit" value="登録"><br>
+		</form>
+		
+		<h4>＜検索する予約情報を入力してください＞</h4>
+		<form th:action="@{/sheetSer}" method="POST">
+			　予約者名<input type="text" name="name" th:value="${session.id}"><br>
+			　<input type="submit" value="検索">
+		</form>
+		
+		<hr>
+		
+		<h4>＜予約一覧＞</h4>
+		<table>
+			<tr>
+				<th>予約番号</th>
+				<th>予約日</th>
+				<th>予約者名</th>
+			</tr>
+			<tr th:each="singledata:${kensakupra}">
+				<td><p th:text="${singledata.yoyakubango}"></p></td>
+				<td><p th:text="${singledata.yoyakubi}"></p></td>
+				<td><p th:text="${singledata.yoyakuname}"></p></td>
+			</tr>
+		</table>
+		<a href="http://localhost:8080/reservmodify">予約変更削除</a>
+		<a href="http://localhost:8080/sheetmypage">マイページへ行く</a>
+	</body>
+</html>

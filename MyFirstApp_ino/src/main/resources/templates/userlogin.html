@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ログイン画面</title>
+		<link rel="stylesheet" type="text/css" href="css/userlogin.css">
+	</head>
+	<body>
+	<form th:action="@{/userHome}" method="POST">
+		ID<input type="text" name="ID" ID="ID"required="required"><br>
+		パスワード<input type="text" name="PASS"ID="PASS"required="required"><br>
+		<input type="submit" value="ログイン">
+	</form>
+		<p th:text="${false0}"></p>
+		<p th:text="${shortpass}">
+	</body>
+</html>
